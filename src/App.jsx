@@ -6,12 +6,20 @@ function App() {
   const [products, setProducts] = useState([])
   const [clickedButtons, setClickedButtons] = useState(new Set())
 
+
   useEffect(() => {
-    fetch('/data/products.json')
+    fetch(`${import.meta.env.BASE_URL}data/products.json`)
       .then(res => res.json())
       .then(data => setProducts(data))
       .catch(error => console.error('상품 데이터 로드 실패:', error))
   }, [])
+
+  // useEffect(() => {
+  //   fetch('/data/products.json')
+  //     .then(res => res.json())
+  //     .then(data => setProducts(data))
+  //     .catch(error => console.error('상품 데이터 로드 실패:', error))
+  // }, [])
 
   const handleCartClick = (productId) => {
     if (!clickedButtons.has(productId)) {

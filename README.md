@@ -1,12 +1,40 @@
-# React + Vite
+# ShoeKingMall
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📝 프로젝트 소개
+ShoeKingMall는 다양한 신발 상품을 한눈에 보고, 장바구니에 담을 수 있는 간단한 신발 쇼핑몰 웹 애플리케이션입니다.  
+직관적인 UI와 빠른 반응성으로 누구나 쉽게 사용할 수 있도록 제작되었습니다.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⏰ 개발 기간
+- 25.07.07 ~ 25.08.31
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 👤 개발자
+- Binz
+
+---
+
+## 💻 개발환경
+- 운영체제: Windows 10
+- 에디터: Visual Studio Code
+- 패키지 매니저: npm
+- 버전 관리: Git, GitHub
+
+---
+
+## 🛠️ 기술스택
+- **Frontend**: React (Vite)
+- **언어**: JavaScript, CSS
+- **배포**: GitHub Pages
+- **기타**: gh-pages 패키지
+
+---
+
+## ✨ 주요기능
+- 신발 상품 목록 조회
+- 상품별 이미지, 브랜드, 설명, 가격 표시
+- 상품을 장바구니에 담기 (버튼 클릭 시 카운트 및 상태 변경)
+- 장바구니 아이콘 및 담은 상품 개수 표시
+- 반응형 디자인 및 직관적인 UI

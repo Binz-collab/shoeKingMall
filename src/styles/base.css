@@ -30,7 +30,30 @@
   min-height: 100vh;
   background: #fff;                        /* 앱 배경색 */
   box-shadow: 0 0 10px rgba(0,0,0,0.08);   /* 그림자 */
-  overflow: hidden;                          /* 내용 넘침 방지 */
+  overflow-x: hidden;                          /* 내용 넘침 방지 */
+  overflow-y: auto;                          /* 내용 넘침 방지 */
   display: flex;
   flex-direction: column;
+  /* 스크롤바 스타일링 (WebKit 기반 브라우저) */
+  scrollbar-width: thin;                    /* Firefox */
+  scrollbar-color: #888 #f1f1f1;           /* Firefox */
+}
+
+/* WebKit 기반 브라우저 스크롤바 스타일링 */
+.app-frame::-webkit-scrollbar {
+  width: 8px;
+}
+
+.app-frame::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.app-frame::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.app-frame::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

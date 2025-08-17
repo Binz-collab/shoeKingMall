@@ -80,7 +80,7 @@
 }
 
 /* 가로모드 orientation 테스트용 (width 기반) */
-@media (min-width: 1024px) and (max-width: 1650px) {
+@media (min-width: 1024px) /*and (max-width: 1650px)*/ {
   .product-list-grid {
     grid-template-columns: repeat(4, 1fr) !important;
     gap: 24px;

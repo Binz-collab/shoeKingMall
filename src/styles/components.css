@@ -74,6 +74,14 @@
   flex-shrink: 0;
 }
 
+.button-container {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
 .cart-btn {
   background: #000;
   color: #fff;
@@ -81,18 +89,44 @@
   border-radius: 30px;
   padding: 3px 15px;
   font-size: 0.6rem;
+  font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s ease;
   align-self: flex-start;
-  flex-shrink: 0;
-  margin-top: auto;
 }
 
 .cart-btn:hover {
-  background: #333;
+  background: #FFEF64;
 }
 
+.cart-btn:active {
+  transform: translateY(1px);
+}
+
+/*
 .cart-btn.clicked {
   background: #D8D8D8;
   color: #fff;
+}
+*/
+
+.buy-btn {
+  flex: 1;
+  background: #FFEF64;
+  color: #000;
+  padding: 3px 15px;
+  font-size: 0.6rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.buy-btn:hover {
+  background-color: #c82333;
+}
+
+.buy-btn:active {
+  transform: translateY(1px);
 }

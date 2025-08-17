@@ -1,0 +1,187 @@
+/* 상품 목록 페이지 전용 스타일 */
+
+.product-list-page {
+  flex: 1;
+  padding: 16px;
+  background: #fff;
+}
+
+.product-list-header {
+  margin-bottom: 40px;
+}
+
+.product-list-header h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.product-list-header p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* 상품 페이지 반응형 스타일 */
+
+/* 작은 화면 */
+@media (max-width: 480px) {
+  .product-list-page {
+    padding: 12px;
+  }
+  
+  .product-list-grid {
+    gap: 12px;
+  }
+  
+  .product-card {
+    height: 260px;
+    min-height: 260px;
+    max-height: 260px;
+    padding: 10px;
+  }
+  
+  .product-image {
+    height: 100px;
+  }
+  
+  .product-desc {
+    font-size: 0.7rem;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    max-lines: 2;
+    max-height: 2.6em;
+  }
+}
+
+/* 세로모드 orientation 테스트용 (width 기반) */
+@media (min-width: 481px) and (max-width: 1180px) {
+  .product-list-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 16px;
+  }
+  
+  .product-card {
+    height: 280px;
+    min-height: 280px;
+  }
+  
+  .product-image {
+    height: 140px;
+  }
+  
+  .product-list-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .product-list-header p {
+    font-size: 1rem;
+  }
+}
+
+/* 가로모드 orientation 테스트용 (width 기반) */
+@media (min-width: 1024px) and (max-width: 1650px) {
+  .product-list-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 24px;
+  }
+  
+  .product-card {
+    height: 280px;
+    min-height: 280px;
+  }
+  
+  .product-image {
+    height: 120px;
+  }
+  
+  .menu-fixed {
+    height: 55px;
+    padding: 0 24px;
+  }
+}
+
+/* 실제 기기 세로모드 */
+@media (orientation: portrait) and (min-width: 481px) {
+  /* 세로모드에서 추가 조정이 필요한 경우 */
+}
+
+/* 실제 기기 가로모드 */
+@media (orientation: landscape) and (min-width: 1024px) {
+  /* 가로모드에서 추가 조정이 필요한 경우 */
+}
+
+/* 데스크톱 */
+/* @media (min-width: 769px) {
+  
+  
+  .product-list-grid {
+    gap: 20px;
+  }
+  
+  .product-card {
+    height: 300px;
+    min-height: 300px;
+  }
+  
+  .product-image {
+    height: 130px;
+  }
+  
+  .product-list-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .product-list-header p {
+    font-size: 1rem;
+  }
+  
+  .menu-fixed {
+    height: 65px;
+    padding: 0 28px;
+  }
+} */
+
+/* 세로모드 */
+@media (orientation: portrait) {
+  .product-list-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  
+  .product-card {
+    height: 260px;
+    min-height: 260px;
+  }
+  
+  .product-image {
+    height: 100px;
+  }
+  
+  .menu-fixed {
+    height: 60px;
+    padding: 0 16px;
+  }
+}
+
+/* 가로모드 */
+@media (orientation: landscape) {
+  .product-list-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .product-card {
+    height: 300px;
+    min-height: 300px;
+  }
+  
+  .product-image {
+    height: 140px;
+  }
+  
+  .menu-fixed {
+    height: 50px;
+    padding: 0 24px;
+  }
+}

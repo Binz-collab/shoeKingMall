@@ -1,0 +1,94 @@
+.add-card-box {
+  width: 50%;
+  aspect-ratio: 208 / 123;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.add-card-box:hover {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+}
+
+
+.modal-header {
+  align-items: center;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-right: 1rem;
+  cursor: pointer;
+  color: #525252; /* Default icon color */
+  transition: color 0.2s ease-in-out;
+}
+
+.btn-back:hover {
+  color: #000000; /* Change only icon color on hover */
+}
+
+.modal-body {
+  aspect-ratio: 123 / 150;
+}
+
+/* The default react-bootstrap modal is not fully responsive in the same way */
+/* We will apply custom widths to better match the previous tailwind implementation */
+.modal-dialog {
+  width: 91.666667%;
+}
+
+.modal-title {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: normal;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px; /* Overriding default sm */
+    width: 83.333333%;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    max-width: 700px; /* Overriding default md */
+    width: 75%;
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-dialog {
+    max-width: 800px; /* Overriding default lg */
+    width: 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .modal-dialog {
+    max-width: 900px; /* Overriding default xl */
+    width: 40%;
+  }
+}
+
+.register-credit-card-modal .add-card-box:hover {
+  background-color: initial;
+  border-color: initial;
+}
+
+.register-credit-card-modal .add-card-box:hover {
+  background-color: initial;
+  border-color: initial;
+}

@@ -2,12 +2,38 @@ import { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { Form, Row, Col} from 'react-bootstrap';
 import '../styles/pages/registerCreditCard.css';
+import Group23Svg from '../assets/Group 23.svg';
 
 const CardRegistrationModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(true);
+  // 카드 번호 각 부분의 상태를 관리하는 state
+  const [cardNumberParts, setCardNumberParts] = useState(['', '', '', '']);
+  // 비밀번호 앞 2자리를 위한 state 추가
+  const [passwordParts, setPasswordParts] = useState(['', '']);
 
   const handleClose = () => setIsModalOpen(false);
   const handleShow = () => setIsModalOpen(true);
+  
+  // 사용자 입력을 처리하는 함수
+  const handleCardNumberChange = (index, value) => {
+    // 숫자가 아닌 문자 필터링
+    const filteredValue = value.replace(/\D/g, '');
+
+    // 해당 인덱스의 카드 번호 부분을 업데이트
+    const newCardNumberParts = [...cardNumberParts];
+    newCardNumberParts[index] = filteredValue;
+    setCardNumberParts(newCardNumberParts);
+  };
+
+  
+ // 비밀번호 입력 변경을 처리하는 함수
+ const handlePasswordChange = (index, value) => {
+   // 숫자가 아닌 문자 필터링 로직 추가
+   const filteredValue = value.replace(/\D/g, '');
+   const newPasswordParts = [...passwordParts];
+   newPasswordParts[index] = filteredValue; // 필터링된 값 사용
+   setPasswordParts(newPasswordParts);
+ };
 
   const handleAddCard = () => {
     // 카드 추가 로직
@@ -74,23 +100,38 @@ const CardRegistrationModal = () => {
         <Form>
             <Form.Group className="mb-3">
                 <Form.Label>카드 번호</Form.Label>
-                <Row gx-0>
-                    <Col className="no-col-padding">
-                        <Form.Control type="password" maxLength={4} className="text-center"/>
+                <Row className="gx-3">
+                {
+                  cardNumberParts.map((part, index) => (
+                  <Col key={index}>
+                    <Form.Control
+                      type={index < 2 ? "tel" : "password"} // 인덱스에 따라 type 변경
+                      pattern="\d*"
+                      maxLength={4}
+                      className="text-center"
+                      value={part} // Controlled component
+                      onChange={(e) => handleCardNumberChange(index, e.target.value)}/>
+                  </Col>
+                  ))
+                }
+                  {/* {
+                    Array.from({ length: 2 }, (_, index) => (
+                    <Col key={index}>
+                      <Form.Control type="tel" pattern="\d*" maxLength={4} className="text-center"/>
                     </Col>
-                    <Col className="no-col-padding">
-                        <Form.Control type="password" maxLength={4} className="text-center"/>
+                    ))
+                  }
+                  {
+                    Array.from({ length: 2 }, (_, index) => (
+                    <Col key={index}>
+                      <Form.Control type="password" maxLength={4} className="text-center"/>
                     </Col>
-                    <Col className="no-col-padding">
-                        <Form.Control type="password" maxLength={4} className="text-center"/>
-                    </Col>
-                    <Col className="no-col-padding">
-                        <Form.Control type="password" maxLength={4} className="text-center"/>
-                    </Col>
+                    ))
+                  } */}
                 </Row>
             </Form.Group>
 
-            <Row gx-0>
+            <Row>
                 <Col xs={4}>
                     <Form.Group className="mb-3">
                         <Form.Label>만료일</Form.Label>
@@ -104,27 +145,56 @@ const CardRegistrationModal = () => {
                 <Form.Control placeholder="카드에 표시된 이름과 동일하게 입력하세요." maxLength={30} />
             </Form.Group>
 
-            <Row gx-0>
-                <Col xs={4}>
-                    <Form.Group className="mb-3">
-                        <Form.Label>보안코드 (CVC/CVV)</Form.Label>
-                        <Form.Control placeholder="000" maxLength={5} />
-                    </Form.Group>
-                </Col>
-            </Row>
+            
+            <Form.Group className="mb-3">
+                <Form.Label>보안코드 (CVC/CVV)</Form.Label>
+                {/* <Form.Control placeholder="000" maxLength={5} /> */}
+                <Row className='gx-5 align-items-center'>
+                {
+                  [0,1,2].map((a) => {
+                      return (
+                          <Col xs={1} key={a}>
+                              <Form.Control type="tel" maxLength={1} className="text-center password-input-width"/>
+                          </Col>
+                      )
+                  })
+                }
+                  <Col>
+                    <img src={Group23Svg} alt="CVC Info" className="ms-3"/>
+                  </Col>
+                </Row>
+            </Form.Group>
 
             <Form.Group className="mb-3">
                 <Form.Label>비밀번호</Form.Label>
-                <Row gx-0>
-                    {
-                        [1,2,3,4].map((a) => {
-                            return (
-                                <Col xs={2} key={a}>
-                                    <Form.Control type="password" maxLength={1} className="text-center"/>
-                                </Col>
-                            )
-                        })
-                    }
+                <Row className='gx-5'>
+                  {
+                   // [1,2,3,4] 대신 [0,1,2,3]을 사용하면 인덱스 처리가 더 직관적입니다.
+                   // 여기서는 기존의 [1,2,3,4]를 유지하고 인덱스를 조정합니다.
+                   [1,2,3,4].map((index) => {
+                       const isActualInput = index <= 2; // 첫 입력 필드
+                       // 실제 입력 필드일 경우 state 값, 아니면 모자이크 문자 '•' 표시
+                       const displayValue = isActualInput ? passwordParts[index - 1] : '•';
+                       const isMaskedAndReadOnly = !isActualInput; // 읽기 전용 여부
+ 
+                       return (
+                           <Col xs={1} key={index}>
+                               <Form.Control
+                                   type="password"
+                                   maxLength={1}
+                                   // isMaskedAndReadOnly가 true일 때 masked-password-field 클래스 추가
+                                   className={`text-center password-input-width ${isMaskedAndReadOnly ? 'masked-password-field' : ''}`}
+                                   //2개는 읽기 전용 아님, 뒤 2개는 읽기 전용
+                                   readOnly={!isActualInput} 
+                                   value={displayValue}
+                                   // 실제 입력 필드일 경우에 onChange 핸들러 연결
+                                   onChange={isActualInput ? (e) => handlePasswordChange(index - 1, e.target.value) : undefined}
+                                   tabIndex={isMaskedAndReadOnly ? -1 : undefined} // 탭 순서에서 제외
+                                />
+                           </Col>
+                       )
+                   })
+                }
                 </Row>
             </Form.Group>
         </Form>
